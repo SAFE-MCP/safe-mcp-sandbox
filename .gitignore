@@ -1,0 +1,20 @@
+# Node/TS
+node_modules/
+dist/
+.env
+.env.*
+npm-debug.log*
+yarn.lock
+pnpm-lock.yaml
+
+# OS
+.DS_Store
+
+# Docker
+.dockerignore
+
+# Editors
+.idea/
+.vscode/
+*.swp
+
