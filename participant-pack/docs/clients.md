@@ -2,13 +2,14 @@
 # MCP Clients
 
 This page shows three ways to connect to the public image:
+- Recommended client: Claude Desktop (GUI). Use MCP Inspector for quick validation.
 - MCP Inspector (terminal, recommended for quick validation)
 - Claude Desktop (GUI client)
 - Cursor (IDE client)
 
 All examples expect you have created a local `flags/flag.txt` and that Docker can access that folder.
 
-## MCP Inspector (recommended)
+## MCP Inspector
 
 Run without installing (uses `npx`):
 
@@ -37,7 +38,7 @@ Tips:
 - `--` separates Inspector from the server command; everything after is the Docker command.
 - If the volume mount fails, try an absolute path on the left side of `-v`.
 
-## Claude Desktop
+## Claude Desktop (recommended)
 
 Config file locations:
 - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
