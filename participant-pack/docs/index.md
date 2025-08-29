@@ -8,7 +8,26 @@ Do not assume a specific attack; approach this like a real investigation. Gather
 
 - Recommended: Claude Desktop (GUI)
   - Add an MCP server entry pointing to Docker.
-  - See full JSON snippet in [clients.md](clients.md).
+  - Quick JSON snippet (replace /ABS/PATH/flags):
+    
+    {
+      "mcpServers": {
+        "safe-mcp": {
+          "command": "docker",
+          "args": [
+            "run","--rm","-i",
+            "--network","none",
+            "-v","/ABS/PATH/flags:/opt/flags:ro",
+            "ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08"
+          ]
+        }
+      }
+    }
+    
+    Safe mode: insert "-e","MODE=safe" before the image tag.
+    
+    Notes: Use an absolute host path; on Windows, escape backslashes in JSON.
+  - See full details in [clients.md](clients.md).
 
 - Alternatively: MCP Inspector (no install)
   - macOS/Linux:
