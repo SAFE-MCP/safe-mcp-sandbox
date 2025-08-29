@@ -1,9 +1,20 @@
 name: Build and Publish Container
 
 on:
+  pull_request:
   push:
     branches: [ main ]
     tags: [ 'v*' ]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish images to GHCR"
+        type: boolean
+        default: false
+      alias:
+        description: "Extra tag/alias (e.g., hackathon-YYYY-MM)"
+        type: string
+        default: ""
 
 permissions:
   contents: read
@@ -47,6 +58,7 @@ jobs:
         run: node server/scripts/smoke.mjs
 
       - name: Log in to GHCR
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish)
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -68,10 +80,11 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
-            type=raw,value=edge,enable=${{ github.ref == 'refs/heads/main' }}
             type=raw,value=hackathon,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+            type=raw,value=${{ inputs.alias }},enable=${{ inputs.alias != '' }}
 
       - name: Build and push
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish)
         uses: docker/build-push-action@v5
         with:
           context: .
