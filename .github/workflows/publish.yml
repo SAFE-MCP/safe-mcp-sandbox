@@ -41,6 +41,7 @@ jobs:
           tags: safe-mcp-sandbox:smoketest
 
       - name: Run smoke test (unsafe vs safe)
+        timeout-minutes: 5
         env:
           IMAGE: safe-mcp-sandbox:smoketest
         run: node server/scripts/smoke.mjs
