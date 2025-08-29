@@ -52,7 +52,14 @@ This checklist ships a sanitized participant experience via a GHCR alias, withou
 
 ## Event Release Checklist
 - [ ] Organizer CI green (smoke test) for `v0.1.0`.
-- [ ] Alias pulls cleanly: `docker pull ghcr.io/<org>/safe-mcp-sandbox:<event-tag>`.
+- [ ] Mint public alias tag on participant image:
+  - Actions → Build and Publish Container → Run workflow
+  - `Publish images to GHCR` = true
+  - `Extra tag/alias` = `<event-tag>` (e.g., `hackathon-YYYY-MM`)
+- [ ] Update `participant-pack/image.env` to the new alias.
+- [ ] Sync `participant-pack/` to the public repo and push.
+- [ ] Tag the public repo with the same alias.
+- [ ] Alias pulls cleanly: `docker pull ghcr.io/<org>/safe-mcp-hackathon:<event-tag>`.
 - [ ] Merge participant-pack to `main`, enable GitHub Pages, switch repo public.
 - [ ] Share only the participant repo URL and the alias image in announcements.
 

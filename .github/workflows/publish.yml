@@ -14,7 +14,7 @@ on:
       alias:
         description: "Extra tag/alias (e.g., hackathon-YYYY-MM)"
         type: string
-        default: ""
+        default: "hackathon-YYYY-MM"
 
 permissions:
   contents: read
@@ -80,7 +80,8 @@ jobs:
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
             type=raw,value=latest,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
-            type=raw,value=hackathon,enable=${{ startsWith(github.ref, 'refs/tags/v') }}
+            # Moving pointer for current event
+            type=raw,value=hackathon,enable=${{ startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.publish) }}
             type=raw,value=${{ inputs.alias }},enable=${{ inputs.alias != '' }}
 
       - name: Build and push
