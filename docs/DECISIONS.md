@@ -29,7 +29,8 @@ This file records the choices we made so future events stay consistent.
 ### Event Release Flow (Summary)
 1. Run manual publish workflow and set the event alias (e.g., `hackathon-YYYY-MM`).
 2. Update `participant-pack/image.env` to the new alias.
-3. Sync `participant-pack/` to the public repo `safe-mcp-hackathon` (subtree or copy) and push.
+3. Sync `participant-pack/` to the public repo `safe-mcp-hackathon` and push:
+   - Preferred: `scripts/publish-participant.sh` (uses `git subtree split` and pushes to `main`).
+   - Alt: manual copy/rsync to a checkout of the public repo.
 4. Tag the participant repo with the same alias for traceability.
 5. Announce only the public repo URL and the alias image.
-
