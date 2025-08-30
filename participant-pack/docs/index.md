@@ -34,6 +34,12 @@ What success looks like:
     Notes: Use an absolute host path; on Windows, escape backslashes in JSON.
   - See full details in [clients.md](clients.md).
 
+## Client Guides
+
+- Claude Desktop setup (step-by-step): see [clients.md#claude-desktop-recommended](clients.md#claude-desktop-recommended)
+- Cursor setup (step-by-step): see [clients.md#cursor](clients.md#cursor)
+- Inspector quick check: see [clients.md#mcp-inspector](clients.md#mcp-inspector)
+
 - Alternatively: MCP Inspector (no install)
   - macOS/Linux:
     `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`

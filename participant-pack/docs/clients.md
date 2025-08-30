@@ -75,17 +75,46 @@ Notes:
   - macOS/Linux example: `/Users/you/projects/safe-mcp/flags:/opt/flags:ro`
   - Windows JSON needs backslashes escaped: `C:\\Users\\you\\safe-mcp\\flags:/opt/flags:ro`
 - Steps:
-  1) Quit Claude Desktop.
-  2) Edit the config file above and add the snippet.
-  3) Save, then reopen Claude Desktop.
-  4) Open a chat and ask to list tools (or check the Tools panel).
+  1) Quit Claude Desktop completely.
+  2) Open the config file above for your OS. If it doesn't exist, create it with `{}`.
+  3) Paste the JSON snippet above and adjust the absolute flags path.
+  4) Save the file. For safe mode, insert `"-e","MODE=safe"` before the image tag.
+  5) Reopen Claude Desktop.
+  6) Verify: open a chat and ask to list tools (or check the Tools panel). You should see `safe-mcp` with tools like `notes.search` and `fs.read`.
 
 ## Cursor
 
-Cursor supports the same `mcpServers` structure. Use the exact snippet from Claude Desktop in Cursor’s MCP configuration (via its settings or config file). See the official Cursor docs for the latest configuration location and UI steps.
+Cursor supports the same `mcpServers` structure. Use the UI in current versions (refer to official docs for exact labels): https://modelcontextprotocol.io/clients/cursor
+
+Step-by-step (UI):
+1) Open Cursor Settings.
+2) Search for "Model Context Protocol" or "MCP".
+3) Open the MCP Servers configuration (button like "Open MCP Servers").
+4) Paste this JSON (unsafe mode), adjust `/ABS/PATH/flags` to your absolute path:
+
+{
+  "mcpServers": {
+    "safe-mcp": {
+      "command": "docker",
+      "args": [
+        "run","--platform","linux/amd64","--rm","-i",
+        "--network","none",
+        "-v","/ABS/PATH/flags:/opt/flags:ro",
+        "ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08"
+      ]
+    }
+  }
+}
+
+Safe mode: insert `"-e","MODE=safe",` before the image tag in `args`.
+
+Verify:
+- Open the MCP/Tools view and confirm `safe-mcp` appears with tools like `notes.search` and `fs.read`.
+- Ask to list tools or run a benign query to confirm it responds.
 
 Key points:
 - Use an absolute host path in the `-v` mount.
+- On Apple Silicon, include `--platform linux/amd64`.
 - Use the safe mode variant to validate mitigation (`-e MODE=safe`).
 
 ## Troubleshooting
