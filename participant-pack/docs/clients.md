@@ -52,6 +52,18 @@ Config file locations:
 - Windows: `%AppData%\Claude\claude_desktop_config.json`
 - Linux: `~/.config/Claude/claude_desktop_config.json`
 
+Create config (if missing):
+
+- macOS:
+
+  mkdir -p ~/Library/Application\ Support/Claude
+  touch ~/Library/Application\ Support/Claude/claude_desktop_config.json
+
+- Windows (Command Prompt):
+
+  mkdir "%APPDATA%\Claude"
+  type nul > "%APPDATA%\Claude\claude_desktop_config.json"
+
 Add or merge this JSON snippet (unsafe mode):
 
 {
