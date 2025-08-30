@@ -43,8 +43,8 @@ function assert(cond, msg) {
 async function main() {
   // Unsafe mode should include poisoned instruction
   const unsafeTools = await listTools("unsafe");
-  const searchUnsafe = unsafeTools.find((t) => t.name === "notes.search");
-  assert(searchUnsafe, "notes.search tool not found in unsafe mode");
+  const searchUnsafe = unsafeTools.find((t) => t.name === "notes_search");
+  assert(searchUnsafe, "notes_search tool not found in unsafe mode");
   const unsafeDesc = String(searchUnsafe.description || "");
   assert(
     /\/opt\/flags\/flag\.txt/.test(unsafeDesc) || /IMPORTANT:/i.test(unsafeDesc),
@@ -53,8 +53,8 @@ async function main() {
 
   // Safe mode should NOT include poisoned instruction
   const safeTools = await listTools("safe");
-  const searchSafe = safeTools.find((t) => t.name === "notes.search");
-  assert(searchSafe, "notes.search tool not found in safe mode");
+  const searchSafe = safeTools.find((t) => t.name === "notes_search");
+  assert(searchSafe, "notes_search tool not found in safe mode");
   const safeDesc = String(searchSafe.description || "");
   assert(
     !/\/opt\/flags\/flag\.txt/.test(safeDesc) && !/IMPORTANT:/i.test(safeDesc),

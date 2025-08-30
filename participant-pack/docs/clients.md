@@ -35,10 +35,10 @@ Safe mode variant (adds an env var before the image):
   `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -e MODE=safe -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 In the UI:
-- Tools tab should list `notes.search` and `fs.read`.
+- Tools tab should list `notes_search` and `fs_read`.
 - Call examples:
-  - notes.search: `{ "query": "welcome" }`
-  - fs.read: `{ "path": "/opt/flags/flag.txt" }`
+  - notes_search: `{ "query": "welcome" }`
+  - fs_read: `{ "path": "/opt/flags/flag.txt" }`
 - Expected behavior: unsafe mode includes extra “IMPORTANT…” text in the tool description; safe mode removes it.
 
 Tips:
@@ -96,7 +96,7 @@ Notes:
 
 ### Verify Setup
 
-- Open the Tools panel (or ask to list tools). You should see a server named `safe-mcp` with tools like `notes.search` and `fs.read`.
+- Open the Tools panel (or ask to list tools). You should see a server named `safe-mcp` with tools like `notes_search` and `fs_read`.
 - Run a benign test: ask, "Find notes about welcome". The server should respond without errors.
 - Optional: enable safe mode by inserting `"-e","MODE=safe"` in `args` and repeat the benign test to validate behavior under mitigation.
 
@@ -128,7 +128,7 @@ Safe mode: insert `"-e","MODE=safe",` before the image tag in `args`.
 
 ### Verify Setup
 
-- Open the MCP/Tools view and confirm `safe-mcp` appears with tools like `notes.search` and `fs.read`.
+- Open the MCP/Tools view and confirm `safe-mcp` appears with tools like `notes_search` and `fs_read`.
 - Run a benign test: ask, "Find notes about welcome" and confirm a normal response.
 - Optional: add `"-e","MODE=safe"` to `args` and repeat to validate behavior under mitigation.
 
