@@ -80,7 +80,13 @@ Notes:
   3) Paste the JSON snippet above and adjust the absolute flags path.
   4) Save the file. For safe mode, insert `"-e","MODE=safe"` before the image tag.
   5) Reopen Claude Desktop.
-  6) Verify: open a chat and ask to list tools (or check the Tools panel). You should see `safe-mcp` with tools like `notes.search` and `fs.read`.
+  6) Reopen a chat.
+
+### Verify Setup
+
+- Open the Tools panel (or ask to list tools). You should see a server named `safe-mcp` with tools like `notes.search` and `fs.read`.
+- Run a benign test: ask, "Find notes about welcome". The server should respond without errors.
+- Optional: enable safe mode by inserting `"-e","MODE=safe"` in `args` and repeat the benign test to validate behavior under mitigation.
 
 ## Cursor
 
@@ -108,9 +114,11 @@ Step-by-step (UI):
 
 Safe mode: insert `"-e","MODE=safe",` before the image tag in `args`.
 
-Verify:
+### Verify Setup
+
 - Open the MCP/Tools view and confirm `safe-mcp` appears with tools like `notes.search` and `fs.read`.
-- Ask to list tools or run a benign query to confirm it responds.
+- Run a benign test: ask, "Find notes about welcome" and confirm a normal response.
+- Optional: add `"-e","MODE=safe"` to `args` and repeat to validate behavior under mitigation.
 
 Key points:
 - Use an absolute host path in the `-v` mount.

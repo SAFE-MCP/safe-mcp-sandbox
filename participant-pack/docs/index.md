@@ -4,6 +4,15 @@ Your mission: investigate a vulnerable MCP server, identify the vulnerability, m
 
 Do not assume a specific attack; approach this like a real investigation. Gather evidence, reason about impact, map to techniques, then validate a mitigation.
 
+## Deliverables Checklist
+
+- Technique mapping: list applicable safe‑mcp IDs (e.g., SAFE-T####) and why.
+- Evidence of impact: relevant tool metadata and a transcript/screenshot.
+- Mitigation: proposal (server/client/policy) and trade‑offs.
+- Validation: show the same flow with mitigation enabled and explain the outcome.
+- Repro: exact commands and client configuration used.
+- Length: keep it 1–2 pages; templated option: [`SUBMISSION_TEMPLATE.md`](SUBMISSION_TEMPLATE.md).
+
 What success looks like:
 - Clear identification of a concrete vulnerability and its impact.
 - Correct mapping to at least one safe‑mcp technique ID.
