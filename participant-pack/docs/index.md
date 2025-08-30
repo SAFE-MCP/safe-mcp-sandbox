@@ -4,6 +4,11 @@ Your mission: investigate a vulnerable MCP server, identify the vulnerability, m
 
 Do not assume a specific attack; approach this like a real investigation. Gather evidence, reason about impact, map to techniques, then validate a mitigation.
 
+What success looks like:
+- Clear identification of a concrete vulnerability and its impact.
+- Correct mapping to at least one safe‑mcp technique ID.
+- A plausible mitigation and validation that it prevents the issue.
+
 ## Quick Start (Participants)
 
 - Recommended: Claude Desktop (GUI)
@@ -57,7 +62,7 @@ Prereq: create a local `./flags/flag.txt` file before running.
 - Mapping: link to the safe‑mcp technique(s) and explain the alignment.
 - Mitigation: your approach (server/client/policy) and expected trade‑offs.
 - Validation: show the same scenario in `MODE=safe` and explain the outcome.
-- Keep it 1–2 pages. You can use `../SUBMISSION_TEMPLATE.md`.
+- Keep it 1–2 pages. You can use [`SUBMISSION_TEMPLATE.md`](SUBMISSION_TEMPLATE.md).
 
 ## Timeline (3 hours)
 
@@ -84,3 +89,8 @@ Prereq: create a local `./flags/flag.txt` file before running.
 - “file not found”: create `./flags/flag.txt` in your current folder.
 - Volume mount issues: try an absolute host path on the left side of `-v`.
 - On Windows JSON, escape backslashes in paths.
+
+References:
+- MCP Inspector: https://modelcontextprotocol.io/inspector
+- Claude Desktop: https://modelcontextprotocol.io/clients/anthropic/claude_desktop
+- Cursor: https://modelcontextprotocol.io/clients/cursor

@@ -9,6 +9,11 @@ Apple Silicon (M1/M2): add `--platform linux/amd64` to `docker run` or pulls may
 - Claude Desktop (GUI client)
 - Cursor (IDE client)
 
+Official docs:
+- MCP Inspector: https://modelcontextprotocol.io/inspector
+- Claude Desktop: https://modelcontextprotocol.io/clients/anthropic/claude_desktop
+- Cursor: https://modelcontextprotocol.io/clients/cursor
+
 All examples expect you have created a local `flags/flag.txt` and that Docker can access that folder.
 
 ## MCP Inspector
@@ -69,11 +74,15 @@ Notes:
 - Replace `/ABS/PATH/flags` with your absolute folder path.
   - macOS/Linux example: `/Users/you/projects/safe-mcp/flags:/opt/flags:ro`
   - Windows JSON needs backslashes escaped: `C:\\Users\\you\\safe-mcp\\flags:/opt/flags:ro`
-- Restart Claude Desktop after saving the file, then open a chat and ask to list tools.
+- Steps:
+  1) Quit Claude Desktop.
+  2) Edit the config file above and add the snippet.
+  3) Save, then reopen Claude Desktop.
+  4) Open a chat and ask to list tools (or check the Tools panel).
 
 ## Cursor
 
-Cursor supports the same `mcpServers` structure. Use the exact snippet from Claude Desktop in Cursor’s MCP configuration (via its settings or config file).
+Cursor supports the same `mcpServers` structure. Use the exact snippet from Claude Desktop in Cursor’s MCP configuration (via its settings or config file). See the official Cursor docs for the latest configuration location and UI steps.
 
 Key points:
 - Use an absolute host path in the `-v` mount.
