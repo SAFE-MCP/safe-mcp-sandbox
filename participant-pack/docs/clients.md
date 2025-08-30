@@ -145,3 +145,6 @@ Key points:
   - Ensure Docker Desktop is allowed to access that folder (macOS/Windows file sharing).
 - JSON errors: validate your JSON; on Windows, escape backslashes in paths.
 - Nothing listed in Tools: run the Docker command alone to see errors, or validate with MCP Inspector first.
+- Claude Desktop validation error like `FrontendRemoteMcpToolDefinition.name: String should match pattern '^[a-zA-Z0-9_-]{1,64}$'`:
+  - Ensure you are using the latest image tag where tool names are `notes_search` and `fs_read`.
+  - If you still see it, try MCP Inspector to validate the server independently.
