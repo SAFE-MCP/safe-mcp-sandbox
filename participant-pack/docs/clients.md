@@ -3,6 +3,8 @@
 
 This page shows three ways to connect to the public image:
 - Recommended client: Claude Desktop (GUI). Use MCP Inspector for quick validation.
+
+Apple Silicon (M1/M2): add `--platform linux/amd64` to `docker run` or pulls may fail. On Intel/AMD hosts you can omit it.
 - MCP Inspector (terminal, recommended for quick validation)
 - Claude Desktop (GUI client)
 - Cursor (IDE client)
@@ -14,18 +16,18 @@ All examples expect you have created a local `flags/flag.txt` and that Docker ca
 Run without installing (uses `npx`):
 
 - macOS/Linux:
-  `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+  `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 - Windows PowerShell:
-  `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+  `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 Safe mode variant (adds an env var before the image):
 
 - macOS/Linux:
-  `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -e MODE=safe -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+  `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -e MODE=safe -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 - Windows PowerShell:
-  `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -e MODE=safe -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+  `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -e MODE=safe -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 In the UI:
 - Tools tab should list `notes.search` and `fs.read`.
@@ -52,7 +54,7 @@ Add or merge this JSON snippet (unsafe mode):
     "safe-mcp": {
       "command": "docker",
       "args": [
-        "run","--rm","-i",
+        "run","--platform","linux/amd64","--rm","-i",
         "--network","none",
         "-v","/ABS/PATH/flags:/opt/flags:ro",
         "ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08"

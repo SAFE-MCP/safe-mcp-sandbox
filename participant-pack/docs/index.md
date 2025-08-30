@@ -15,7 +15,7 @@ Do not assume a specific attack; approach this like a real investigation. Gather
         "safe-mcp": {
           "command": "docker",
           "args": [
-            "run","--rm","-i",
+            "run","--platform","linux/amd64","--rm","-i",
             "--network","none",
             "-v","/ABS/PATH/flags:/opt/flags:ro",
             "ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08"
@@ -31,15 +31,15 @@ Do not assume a specific attack; approach this like a real investigation. Gather
 
 - Alternatively: MCP Inspector (no install)
   - macOS/Linux:
-    `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+    `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
   - Windows PowerShell:
-    `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+    `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 - Safe mode variant (to validate mitigations):
   - macOS/Linux:
-    `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -e MODE=safe -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+    `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -e MODE=safe -v "$(pwd)/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
   - Windows PowerShell:
-    `npx @modelcontextprotocol/inspector -- docker run --rm -i --network none -e MODE=safe -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
+    `npx @modelcontextprotocol/inspector -- docker run --platform linux/amd64 --rm -i --network none -e MODE=safe -v "${PWD}/flags:/opt/flags:ro" ghcr.io/bishnubista/safe-mcp-hackathon:hackathon-2025-08`
 
 Prereq: create a local `./flags/flag.txt` file before running.
 
